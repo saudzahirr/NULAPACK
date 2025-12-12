@@ -1,0 +1,22 @@
+[build-system]
+requires = [
+    "meson-python",
+    "numpy",
+    "packaging"
+]
+build-backend = "mesonpy"
+
+[project]
+name = "nulapack"
+version = "0.1.0"
+description = "NUmerical Linear Algebra PACKage"
+
+dependencies = [
+    "numpy",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff",
+]

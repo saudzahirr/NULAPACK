@@ -66,3 +66,8 @@ mangling.h
 .vscode
 /bin/test_*
 lib
+build
+dist
+*.egg-info
+__pycache__/
+*.log

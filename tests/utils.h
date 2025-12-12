@@ -37,7 +37,6 @@ void TEST_ASSERT(int condition, const char* message) {
     if (!condition) {
         printf("ASSERTION FAILED: %s\n", message);
         test_failed++;
-        exit(1);
     }
 }
 

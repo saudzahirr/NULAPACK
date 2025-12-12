@@ -5,10 +5,12 @@ print_help() {
 Usage: $0 [OPTIONS]
 
 Options:
-  --build, -b     Run the build process (without tests)
-  --test,  -t     Run the build process with tests
-  --doc,   -d     Generate documentation
-  --help,  -h     Show this help message and exit
+  --build,   -b     Run the build process (without tests)
+  --test,    -t     Run the build process with tests
+  --install, -i     Install python interface
+  --wheel,   -w     Build the python interface wheel
+  --doc,     -d     Generate documentation
+  --help,    -h     Show this help message and exit
 EOF
     exit 0
 }
@@ -16,6 +18,8 @@ EOF
 # Default flags
 BUILD=0
 TEST=0
+INSTALL=0
+WHEEL=0
 DOC=0
 
 # No arguments = show help
@@ -31,6 +35,12 @@ while [ $# -gt 0 ]; do
             ;;
         --test|-t)
             TEST=1
+            ;;
+        --install|-i)
+            INSTALL=1
+            ;;
+        --wheel|-w)
+            WHEEL=1
             ;;
         --doc|-d)
             DOC=1
@@ -65,6 +75,24 @@ if [ $TEST -eq 1 ]; then
     cd build || { echo "Cannot change directory to build"; exit 1; }
     make || { echo "Build failed"; exit 1; }
     cd .. || { echo "Cannot change back to project root"; exit 1; }
+
+    pip install .[dev] -v --log build.log || { echo "Install failed"; exit 1; }
+
+    bin/test_gauss_seidel_c || { echo "C Tests failed"; exit 1; }
+    bin/test_gauss_seidel_cxx || { echo "C++ Tests failed"; exit 1; }
+    pytest -s || { echo "Python Tests failed"; exit 1; }
+fi
+
+# INSTALL
+if [ $INSTALL -eq 1 ]; then
+    echo "Installing python interface..."
+    pip install . -v --log build.log || { echo "Install failed"; exit 1; }
+fi
+
+# WHEEL
+if [ $WHEEL -eq 1 ]; then
+    echo "Building wheel..."
+    pip wheel . -v -w dist --log build.log || { echo "Wheel build failed"; exit 1; }
 fi
 
 # DOCUMENTATION

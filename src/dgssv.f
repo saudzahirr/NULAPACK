@@ -22,7 +22,7 @@ C     ====================================================================
 C       Description:
 C       ------------------------------------------------------------------
 C         Iterative Gauss-Seidel solver for solving linear systems of
-C         equations A * X = B, where A is a square N×N matrix in
+C         equations A * X = B, where A is a square N x N matrix in
 C         row-major flat array format. Double precision version.
 C
 C         On input:  X contains initial guess
@@ -32,18 +32,19 @@ C         Convergence is based on maximum absolute difference per iteration.
 C     ====================================================================
 C       Arguments:
 C       ------------------------------------------------------------------
-C         N         : INTEGER            -> size of the matrix (NxN)
+C         N         : INTEGER            -> size of the matrix (N x N)
 C         A(*)      : DOUBLE PRECISION   -> flat array, row-major matrix A
 C         B(N)      : DOUBLE PRECISION   -> right-hand side vector
 C         X(N)      : DOUBLE PRECISION   -> input: initial guess, output: solution
 C         MAX_ITER  : INTEGER            -> max number of iterations
-C         TOL       : DOUBLE PRECISION   -> convergence tolerance (L∞ norm)
+C         TOL       : DOUBLE PRECISION   -> convergence tolerance
+C         OMEGA     : DOUBLE PRECISION   -> relaxation coefficient
 C         STATUS    : INTEGER            -> return code:
 C                                                 0 = success
 C                                                >0 = did not converge
 C                                                <0 = illegal or zero diagonal
 C     ====================================================================
-      SUBROUTINE DGSSV(N, A, B, X, MAX_ITER, TOL, STATUS)
+      SUBROUTINE DGSSV(N, A, B, X, MAX_ITER, TOL, OMEGA, STATUS)
 
 C   I m p l i c i t   T y p e s
 C   ------------------------------------------------------------------
@@ -52,7 +53,7 @@ C   ------------------------------------------------------------------
 C   D u m m y   A r g u m e n t s
 C   ------------------------------------------------------------------
       INTEGER            :: N, MAX_ITER, STATUS
-      DOUBLE PRECISION   :: A(*), B(N), X(N), TOL
+      DOUBLE PRECISION   :: A(*), B(N), X(N), TOL, OMEGA
 
 C   L o c a l   V a r i a b l e s
 C   ------------------------------------------------------------------
@@ -90,8 +91,9 @@ C           Check diagonal element A(i,i)
                RETURN
             END IF
 
-C           Update X_NEW(i)
+C           Update X_NEW(i) with relaxation
             X_NEW(I) = (B(I) - S1 - S2) / A(INDEX)
+            X_NEW(I) = X(I) + OMEGA * (X_NEW(I) - X(I))
          END DO
 
 C        C o n v e r g e n c e   C h e c k

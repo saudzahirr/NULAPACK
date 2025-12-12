@@ -21,9 +21,10 @@ void TEST_CASE_FLOAT32() {
     float X[4] = {0};
     int max_iter = 1000;
     float tol = 1e-4f;
+    float omega = 1.0f;
     int status;
 
-    GAUSS_SEIDEL(&N, A, B, X, &max_iter, &tol, &status);
+    GAUSS_SEIDEL(&N, A, B, X, &max_iter, &tol, &omega, &status);
 
     for (int i = 0; i < N; i++) printf("X[%d] = %.6f\n", i, X[i]);
 
@@ -32,6 +33,7 @@ void TEST_CASE_FLOAT32() {
     TEST_ASSERT(float_within_abs(X[1], 2.0f, 1e-5f), "X[1] should be ~2.0");
     TEST_ASSERT(float_within_abs(X[2], -1.0f, 1e-5f), "X[2] should be ~-1.0");
     TEST_ASSERT(float_within_abs(X[3], 1.0f, 1e-5f), "X[3] should be ~1.0");
+    test_passed++;
 }
 
 void TEST_CASE_FLOAT64() {
@@ -49,9 +51,10 @@ void TEST_CASE_FLOAT64() {
     double X[4] = {0};
     int max_iter = 1000;
     double tol = 1e-10;
+    double omega = 1.0;
     int status;
 
-    GAUSS_SEIDEL(&N, A, B, X, &max_iter, &tol, &status);
+    GAUSS_SEIDEL(&N, A, B, X, &max_iter, &tol, &omega, &status);
 
     for (int i = 0; i < N; i++) printf("X[%d] = %.12lf\n", i, X[i]);
 
@@ -60,6 +63,7 @@ void TEST_CASE_FLOAT64() {
     TEST_ASSERT(double_within_abs(X[1], 2.0, 1e-10), "X[1] should be ~2.0");
     TEST_ASSERT(double_within_abs(X[2], -1.0, 1e-10), "X[2] should be ~-1.0");
     TEST_ASSERT(double_within_abs(X[3], 1.0, 1e-10), "X[3] should be ~1.0");
+    test_passed++;
 }
 
 void TEST_CASE_COMPLEX64() {
@@ -79,9 +83,10 @@ void TEST_CASE_COMPLEX64() {
     float _Complex X[4] = {0};
     int max_iter = 1000;
     float tol = 1e-4f;
+    float omega = 1.0f;
     int status;
 
-    GAUSS_SEIDEL(&N, A, B, X, &max_iter, &tol, &status);
+    GAUSS_SEIDEL(&N, A, B, X, &max_iter, &tol, &omega, &status);
 
     for (int i = 0; i < N; i++) {
         printf("X[%d] = (%.6f, %.6f)\n", i, crealf(X[i]), cimagf(X[i]));
@@ -92,6 +97,7 @@ void TEST_CASE_COMPLEX64() {
     TEST_ASSERT(complex_float_within_abs(X[1], 2.018524f + 0.081610f*I, 1e-5f), "X[1] should be ~(2.018524, 0.081610)");
     TEST_ASSERT(complex_float_within_abs(X[2], -0.982175f + 0.186858f*I, 1e-5f), "X[2] should be ~(-0.982175, 0.186858)");
     TEST_ASSERT(complex_float_within_abs(X[3], 0.963693f - 0.252708f*I, 1e-5f), "X[3] should be ~(0.963693, -0.252708)");
+    test_passed++;
 }
 
 void TEST_CASE_COMPLEX128() {
@@ -111,9 +117,10 @@ void TEST_CASE_COMPLEX128() {
     double _Complex X[4] = {0};
     int max_iter = 1000;
     double tol = 1e-12;
+    double omega = 1.0;
     int status;
 
-    GAUSS_SEIDEL(&N, A, B, X, &max_iter, &tol, &status);
+    GAUSS_SEIDEL(&N, A, B, X, &max_iter, &tol, &omega, &status);
 
     for (int i = 0; i < N; i++) {
         printf("X[%d] = (%.12lf, %.12lf)\n", i, creal(X[i]), cimag(X[i]));
@@ -124,6 +131,7 @@ void TEST_CASE_COMPLEX128() {
     TEST_ASSERT(complex_double_within_abs(X[1], 2.018524356148 + 0.081609612259*I, 1e-11), "X[1] should be ~(2.018524356148, 0.081609612259)");
     TEST_ASSERT(complex_double_within_abs(X[2], -0.982174907078 + 0.186858027715*I, 1e-11), "X[2] should be ~(-0.982174907078, 0.186858027715)");
     TEST_ASSERT(complex_double_within_abs(X[3], 0.963693005950 - 0.252707976877*I, 1e-11), "X[3] should be ~(0.963693005950, -0.252707976877)");
+    test_passed++;
 }
 
 int main() {
