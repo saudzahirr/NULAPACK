@@ -71,3 +71,4 @@ dist
 *.egg-info
 __pycache__/
 *.log
+_version.py

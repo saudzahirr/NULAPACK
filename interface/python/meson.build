@@ -47,7 +47,10 @@ py.extension_module(
   install: true
 )
 
+cmd = run_command('bash', ['-c', 'for f in *.py; do [ -e "$f" ] && echo "$f"; done'], check: true)
+python_sources = cmd.stdout().strip().split('\n')
+
 py.install_sources(
-  ['__init__.py'],
+  python_sources,
   subdir: py_mod_name
 )

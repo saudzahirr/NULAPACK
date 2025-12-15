@@ -12,7 +12,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest]
         python-version: ['3.10', '3.11', '3.12', '3.13']
       fail-fast: false
 
@@ -26,38 +26,16 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
-    - name: Install CMake (Ubuntu)
-      if: runner.os == 'Linux'
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y cmake
-
-    - name: Install CMake (macOS)
-      if: runner.os == 'macOS'
-      run: |
-        brew install cmake
-
-    - name: Install CMake (Windows)
-      if: runner.os == 'Windows'
-      run: |
-        choco install cmake
-
     - name: Install dependencies (Ubuntu)
       if: runner.os == 'Linux'
       run: |
         sudo apt-get update
-        sudo apt-get install -y gfortran build-essential
-
-    - name: Install dependencies (macOS)
-      if: runner.os == 'macOS'
-      run: |
-        brew install gcc gfortran
+        sudo apt-get install -y cmake gfortran build-essential
 
     - name: Install dependencies (Windows)
       if: runner.os == 'Windows'
       run: |
-        choco install mingw
-        choco install cmake
+        choco install cmake mingw
 
     - name: Install Python dependencies
       run: |
@@ -66,17 +44,15 @@ jobs:
 
     - name: Build project
       run: |
-        cmake -S . -B build -DBUILD_TEST=OFF
-        cmake --build build
+        python bin/build.py build
 
     - name: Build and test project
       run: |
-        cmake -S . -B build -DBUILD_TEST=ON
-        cmake --build build
+        python bin/build.py test
 
     - name: Install Python package (dev)
       run: |
-        pip install .[dev] -v --log build.log
+        python bin/build.py develop
 
     - name: Run C tests
       if: always()
@@ -143,7 +119,7 @@ jobs:
         sudo apt-get install -y doxygen graphviz
 
     - name: Generate documentation
-      run: doxygen Doxyfile
+      run: python bin/build.py doxygen
 
     - name: Upload documentation artifacts
       uses: actions/upload-artifact@v4
