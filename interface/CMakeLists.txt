@@ -18,10 +18,10 @@ target_include_directories(nulapack_shared PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
     $<INSTALL_INTERFACE:include>
 )
-set_target_properties(nulapack_shared PROPERTIES 
+set_target_properties(nulapack_shared PROPERTIES
     OUTPUT_NAME nulapack
     SOVERSION 1
-    VERSION 0.1.0
+    VERSION ${PROJECT_VERSION}
     LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib
 )
 
@@ -33,9 +33,9 @@ target_include_directories(nulapack_static PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
     $<INSTALL_INTERFACE:include>
 )
-set_target_properties(nulapack_static PROPERTIES 
+set_target_properties(nulapack_static PROPERTIES
     OUTPUT_NAME nulapack
-    VERSION 0.1.0
+    VERSION ${PROJECT_VERSION}
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib
 )
 
