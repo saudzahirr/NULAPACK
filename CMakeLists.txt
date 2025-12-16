@@ -1,20 +1,17 @@
 cmake_minimum_required(VERSION 3.22)
 
-execute_process(
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/bin/get_version.py
-    OUTPUT_VARIABLE RAW_VERSION
-    OUTPUT_STRIP_TRAILING_WHITESPACE
-)
-
-string(REGEX MATCH "^[0-9]+\\.[0-9]+" NULAPACK_VERSION "${RAW_VERSION}")
-
 project(NULAPACK VERSION ${NULAPACK_VERSION} LANGUAGES C CXX Fortran)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+
 enable_language(Fortran)
 enable_language(C)
+
+if(WIN32)
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static-libgcc -static-libstdc++")
+endif()
 
 file(GLOB CMAKE_FILES "${CMAKE_SOURCE_DIR}/cmake/*.cmake")
 
