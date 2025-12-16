@@ -69,6 +69,20 @@ def run_command(command, cwd=None):
 
 def build(with_tests=False):
     cmake_cmd = "cmake -S . -B build"
+    version = (
+        subprocess.run(
+            ["git", "describe", "--tags", "--abbrev=0"], capture_output=True, text=True
+        ).stdout.strip()
+        or None
+    )
+    if not version:
+        raise RuntimeError("Could not determine version from git tags.")
+
+    cmake_cmd += f" -DNULAPACK_VERSION={version[1:]}"
+
+    if sys.platform == "win32":
+        cmake_cmd += "  -G 'MinGW Makefiles'"
+
     if with_tests:
         cmake_cmd += " -DBUILD_TEST=ON"
     else:
@@ -125,8 +139,6 @@ def clean():
         if entry.suffix == ".log":
             logger.info(f"Removing '{entry}'")
             entry.unlink()
-
-    # run_command("rm -rf dist build lib *.egg-info")
 
     logger.info("Finished cleanup.")
 
