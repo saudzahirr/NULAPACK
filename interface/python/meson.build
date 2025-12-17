@@ -23,8 +23,9 @@ fortranobject_c = run_command(py,
 
 py_mod_name = 'nulapack'
 
-cmd = run_command('bash', ['-c', 'for f in ../../src/*.f; do [ -e "$f" ] && echo "$f"; done'], check: true)
-fortran_sources = cmd.stdout().strip().split('\n')
+fortran_sources = run_command(py, ['-c',
+    'import glob; print(" ".join(glob.glob("../../src/*.f")))'
+], check: true).stdout().strip().split()
 
 f2py_target = custom_target(
   py_mod_name + '_f2py',
@@ -47,8 +48,9 @@ py.extension_module(
   install: true
 )
 
-cmd = run_command('bash', ['-c', 'for f in *.py; do [ -e "$f" ] && echo "$f"; done'], check: true)
-python_sources = cmd.stdout().strip().split('\n')
+python_sources = run_command(py, ['-c',
+    'import glob; print(" ".join(glob.glob("*.py")))'
+], check: true).stdout().strip().split()
 
 py.install_sources(
   python_sources,
