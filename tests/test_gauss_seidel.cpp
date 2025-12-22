@@ -4,7 +4,7 @@
 #include <complex>
 #include "gauss-seidel.h"
 
-TEST_CASE("SGSSV - SINGLE PRECISION GAUSS-SEIDEL SOLVER", "[FLOAT32]") {
+TEST_CASE("SGEGSV - SINGLE PRECISION GAUSS-SEIDEL SOLVER", "[FLOAT32]") {
     int N = 4;
     float A[16] = {
         10.0f, -1.0f, 2.0f, 0.0f,
@@ -20,7 +20,7 @@ TEST_CASE("SGSSV - SINGLE PRECISION GAUSS-SEIDEL SOLVER", "[FLOAT32]") {
 
     printf("\n");
     printf("--- TEST CASE ---\n");
-    printf("SGSSV - SINGLE PRECISION GAUSS-SEIDEL SOLVER\n");
+    printf("SGEGSV - SINGLE PRECISION GAUSS-SEIDEL SOLVER\n");
     printf("\n");
 
     GAUSS_SEIDEL(&N, A, B, X, &max_iter, &tol, &status);
@@ -34,7 +34,7 @@ TEST_CASE("SGSSV - SINGLE PRECISION GAUSS-SEIDEL SOLVER", "[FLOAT32]") {
     REQUIRE_THAT(X[3], Catch::Matchers::WithinAbs(1.0f, 1e-5f));
 }
 
-TEST_CASE("DGSSV - DOUBLE PRECISION GAUSS-SEIDEL SOLVER", "[FLOAT64]") {
+TEST_CASE("DGEGSV - DOUBLE PRECISION GAUSS-SEIDEL SOLVER", "[FLOAT64]") {
     int N = 4;
     double A[16] = {
         10.0, -1.0, 2.0, 0.0,
@@ -50,7 +50,7 @@ TEST_CASE("DGSSV - DOUBLE PRECISION GAUSS-SEIDEL SOLVER", "[FLOAT64]") {
 
     printf("\n");
     printf("--- TEST CASE ---\n");
-    printf("DGSSV - DOUBLE PRECISION GAUSS-SEIDEL SOLVER\n");
+    printf("DGEGSV - DOUBLE PRECISION GAUSS-SEIDEL SOLVER\n");
     printf("\n");
 
     GAUSS_SEIDEL(&N, A, B, X, &max_iter, &tol, &status);
@@ -64,7 +64,7 @@ TEST_CASE("DGSSV - DOUBLE PRECISION GAUSS-SEIDEL SOLVER", "[FLOAT64]") {
     REQUIRE_THAT(X[3], Catch::Matchers::WithinAbs(1.0, 1e-10));
 }
 
-TEST_CASE("CGSSV - COMPLEX FLOAT GAUSS-SEIDEL SOLVER", "[COMPLEX64]") {
+TEST_CASE("CGEGSV - COMPLEX FLOAT GAUSS-SEIDEL SOLVER", "[COMPLEX64]") {
     using cf = std::complex<float>;
     int N = 4;
     cf A[16] = {
@@ -81,7 +81,7 @@ TEST_CASE("CGSSV - COMPLEX FLOAT GAUSS-SEIDEL SOLVER", "[COMPLEX64]") {
 
     printf("\n");
     printf("--- TEST CASE ---\n");
-    printf("CGSSV - COMPLEX FLOAT GAUSS-SEIDEL SOLVER\n");
+    printf("CGEGSV - COMPLEX FLOAT GAUSS-SEIDEL SOLVER\n");
     printf("\n");
 
     GAUSS_SEIDEL(&N, A, B, X, &max_iter, &tol, &status);
@@ -101,7 +101,7 @@ TEST_CASE("CGSSV - COMPLEX FLOAT GAUSS-SEIDEL SOLVER", "[COMPLEX64]") {
     REQUIRE_THAT(X[3].imag(), Catch::Matchers::WithinAbs(-0.252708f, 1e-5f));
 }
 
-TEST_CASE("ZGSSV - COMPLEX DOUBLE GAUSS-SEIDEL SOLVER", "[COMPLEX128]") {
+TEST_CASE("ZGEGSV - COMPLEX DOUBLE GAUSS-SEIDEL SOLVER", "[COMPLEX128]") {
     using cd = std::complex<double>;
     int N = 4;
     cd A[16] = {
@@ -118,7 +118,7 @@ TEST_CASE("ZGSSV - COMPLEX DOUBLE GAUSS-SEIDEL SOLVER", "[COMPLEX128]") {
 
     printf("\n");
     printf("--- TEST CASE ---\n");
-    printf("ZGSSV - COMPLEX DOUBLE GAUSS-SEIDEL SOLVER\n");
+    printf("ZGEGSV - COMPLEX DOUBLE GAUSS-SEIDEL SOLVER\n");
     printf("\n");
 
     GAUSS_SEIDEL(&N, A, B, X, &max_iter, &tol, &status);

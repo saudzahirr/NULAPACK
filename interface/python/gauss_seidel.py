@@ -36,14 +36,14 @@ def gauss_seidel(a, b, max_iter=1000, tol=1e-8, omega=1.0):
 
     if np.issubdtype(a.dtype, np.floating):
         if a.dtype == np.float32:
-            status = _nulapack.sgssv(a_flat, b, x, max_iter, tol, omega, 0, n)
+            status = _nulapack.sgegsv(a_flat, b, x, max_iter, tol, omega, 0, n)
         else:  # float64
-            status = _nulapack.dgssv(a_flat, b, x, max_iter, tol, omega, 0, n)
+            status = _nulapack.dgegsv(a_flat, b, x, max_iter, tol, omega, 0, n)
     elif np.issubdtype(a.dtype, np.complexfloating):
         if a.dtype == np.complex64:
-            status = _nulapack.cgssv(a_flat, b, x, max_iter, tol, omega, 0, n)
+            status = _nulapack.cgegsv(a_flat, b, x, max_iter, tol, omega, 0, n)
         else:  # complex128
-            status = _nulapack.zgssv(a_flat, b, x, max_iter, tol, omega, 0, n)
+            status = _nulapack.zgegsv(a_flat, b, x, max_iter, tol, omega, 0, n)
     else:
         raise TypeError(f"Unsupported array dtype: {a.dtype}")
 

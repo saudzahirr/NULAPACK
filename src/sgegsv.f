@@ -17,7 +17,7 @@ C     You should have received a copy of the GNU General Public License
 C     along with NULAPACK.  If not, see <https://www.gnu.org/licenses/>.
 C
 C     ====================================================================
-C       SGSSV   -   Gauss-Seidel Solver for A * X = B
+C       SGEGSV  -   Gauss-Seidel Solver for A * X = B
 C     ====================================================================
 C       Description:
 C       ------------------------------------------------------------------
@@ -44,7 +44,7 @@ C                                          0 = success
 C                                         >0 = did not converge
 C                                         <0 = illegal or zero diagonal
 C     ====================================================================
-      SUBROUTINE SGSSV(N, A, B, X, MAX_ITER, TOL, OMEGA, INFO)
+      SUBROUTINE SGEGSV(N, A, B, X, MAX_ITER, TOL, OMEGA, INFO)
 
 C   I m p l i c i t   T y p e s
 C   ------------------------------------------------------------------

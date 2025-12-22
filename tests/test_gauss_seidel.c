@@ -7,7 +7,7 @@
 #include "utils.h"
 
 void TEST_CASE_FLOAT32() {
-    const char* test_name = "SGSSV - SINGLE PRECISION GAUSS-SEIDEL SOLVER [FLOAT32]";
+    const char* test_name = "SGEGSV - SINGLE PRECISION GAUSS-SEIDEL SOLVER [FLOAT32]";
     PRINT_INFO(test_name);
 
     int N = 4;
@@ -37,7 +37,7 @@ void TEST_CASE_FLOAT32() {
 }
 
 void TEST_CASE_FLOAT64() {
-    const char* test_name = "DGSSV - DOUBLE PRECISION GAUSS-SEIDEL SOLVER [FLOAT64]";
+    const char* test_name = "DGEGSV - DOUBLE PRECISION GAUSS-SEIDEL SOLVER [FLOAT64]";
     PRINT_INFO(test_name);
 
     int N = 4;
@@ -67,7 +67,7 @@ void TEST_CASE_FLOAT64() {
 }
 
 void TEST_CASE_COMPLEX64() {
-    const char* test_name = "CGSSV - COMPLEX FLOAT GAUSS-SEIDEL SOLVER [COMPLEX64]";
+    const char* test_name = "CGEGSV - COMPLEX FLOAT GAUSS-SEIDEL SOLVER [COMPLEX64]";
     PRINT_INFO(test_name);
 
     int N = 4;
@@ -101,7 +101,7 @@ void TEST_CASE_COMPLEX64() {
 }
 
 void TEST_CASE_COMPLEX128() {
-    const char* test_name = "ZGSSV - COMPLEX DOUBLE GAUSS-SEIDEL SOLVER [COMPLEX128]";
+    const char* test_name = "ZGEGSV - COMPLEX DOUBLE GAUSS-SEIDEL SOLVER [COMPLEX128]";
     PRINT_INFO(test_name);
 
     int N = 4;

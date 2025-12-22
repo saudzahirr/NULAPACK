@@ -17,13 +17,13 @@ C     You should have received a copy of the GNU General Public License
 C     along with NULAPACK.  If not, see <https://www.gnu.org/licenses/>.
 C
 C     ====================================================================
-C       ZGSSV   -   Gauss-Seidel Solver for A * X = B
+C       CGEGSV  -   Gauss-Seidel Solver for A * X = B
 C     ====================================================================
 C       Description:
 C       ------------------------------------------------------------------
 C         Iterative Gauss-Seidel solver for solving linear systems of
 C         equations A * X = B, where A is a square N x N matrix in
-C         row-major flat array format. Complex double precision version.
+C         row-major flat array format. Complex single precision version.
 C
 C         On input:  X contains initial guess
 C         On output: X contains solution
@@ -32,19 +32,19 @@ C         Convergence is based on maximum absolute difference per iteration.
 C     ====================================================================
 C       Arguments:
 C       ------------------------------------------------------------------
-C         N         : INTEGER              -> size of the matrix (N x N)
-C         A(*)      : DOUBLE COMPLEX       -> flat array, row-major matrix A
-C         B(N)      : DOUBLE COMPLEX       -> right-hand side vector
-C         X(N)      : DOUBLE COMPLEX       -> input: initial guess, output: solution
-C         MAX_ITER  : INTEGER              -> max number of iterations
-C         TOL       : DOUBLE PRECISION     -> convergence tolerance
-C         OMEGA     : DOUBLE PRECISION     -> relaxation coefficient
-C         INFO      : INTEGER              -> return code:
-C                                                 0 = success
-C                                                >0 = did not converge
-C                                                <0 = illegal or zero diagonal
+C         N         : INTEGER          -> size of the matrix (N x N)
+C         A(*)      : COMPLEX          -> flat array, row-major matrix A
+C         B(N)      : COMPLEX          -> right-hand side vector
+C         X(N)      : COMPLEX          -> input: initial guess, output: solution
+C         MAX_ITER  : INTEGER          -> max number of iterations
+C         TOL       : REAL             -> convergence tolerance
+C         OMEGA     : REAL             -> relaxation coefficient
+C         INFO      : INTEGER          -> return code:
+C                                              0 = success
+C                                             >0 = did not converge
+C                                             <0 = illegal or zero diagonal
 C     ====================================================================
-      SUBROUTINE ZGSSV(N, A, B, X, MAX_ITER, TOL, OMEGA, INFO)
+      SUBROUTINE CGEGSV(N, A, B, X, MAX_ITER, TOL, OMEGA, INFO)
 
 C   I m p l i c i t   T y p e s
 C   ------------------------------------------------------------------
@@ -52,16 +52,16 @@ C   ------------------------------------------------------------------
 
 C   D u m m y   A r g u m e n t s
 C   ------------------------------------------------------------------
-      INTEGER              :: N, MAX_ITER, INFO
-      DOUBLE COMPLEX       :: A(*), B(N), X(N)
-      DOUBLE PRECISION     :: TOL, OMEGA
+      INTEGER          :: N, MAX_ITER, INFO
+      COMPLEX          :: A(*), B(N), X(N)
+      REAL             :: TOL, OMEGA
 
 C   L o c a l   V a r i a b l e s
 C   ------------------------------------------------------------------
-      INTEGER              :: I, J, K, INDEX
-      DOUBLE COMPLEX       :: X_NEW(N)
-      DOUBLE COMPLEX       :: S1, S2
-      DOUBLE PRECISION     :: DIFF, MAX_DIFF
+      INTEGER          :: I, J, K, INDEX
+      COMPLEX          :: X_NEW(N)
+      COMPLEX          :: S1, S2
+      REAL             :: DIFF, MAX_DIFF
 
 C   I n i t i a l   S t a t u s
 C   ------------------------------------------------------------------
@@ -71,8 +71,8 @@ C   M a i n   I t e r a t i o n   L o o p
 C   ------------------------------------------------------------------
       DO K = 1, MAX_ITER
          DO I = 1, N
-            S1 = (0.0D0, 0.0D0)
-            S2 = (0.0D0, 0.0D0)
+            S1 = (0.0, 0.0)
+            S2 = (0.0, 0.0)
 
 C           Compute sum: S1 = sum_{j=1}^{i-1} A(i,j) * X_NEW(j)
             DO J = 1, I - 1
@@ -88,7 +88,7 @@ C           Compute sum: S2 = sum_{j=i+1}^{N} A(i,j) * X(j)
 
 C           Check diagonal element A(i,i)
             INDEX = (I - 1) * N + I
-            IF (A(INDEX) .EQ. (0.0D0, 0.0D0)) THEN
+            IF (A(INDEX) .EQ. (0.0, 0.0)) THEN
                INFO = -I
                RETURN
             END IF
@@ -100,9 +100,9 @@ C           Update X_NEW(i) with relaxation
 
 C        C o n v e r g e n c e   C h e c k
 C        ----------------------------------------------------------------
-         MAX_DIFF = 0.0D0
+         MAX_DIFF = 0.0
          DO I = 1, N
-            DIFF = ABS(X_NEW(I) - X(I))
+            DIFF = ABS(X_NEW(I) - X(I))  ! ABS returns modulus for complex
             IF (DIFF .GT. MAX_DIFF) MAX_DIFF = DIFF
             X(I) = X_NEW(I)
          END DO
