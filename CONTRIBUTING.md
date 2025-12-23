@@ -40,7 +40,7 @@ Feature requests are welcome! Please create an issue with:
    ```
 
 3. **Follow LAPACK Naming Conventions**: All routines must follow the strict LAPACK naming convention:
-   - Format: `<T><MAT><NAME><OP>` (e.g., `DGEGSV`)
+   - Format: `<T><MAT><NAME><OP>` (e.g., `DGEGSSV`)
    - `<T>`: Single letter for precision (S, D, C, Z)
    - `<MAT>`: Two-letter matrix type (GE, SY, HE, PO, TR, etc.)
    - `<NAME>`: 1-2 letter initials from solver name
@@ -135,7 +135,7 @@ usage: build.py [-h] {build, install, wheel, doxygen, develop, test, clean}
 
 Follow LAPACK signature style:
 ```fortran
-SUBROUTINE DGEGSV(N, A, LDA, B, X, MAX_ITER, TOL, OMEGA, INFO)
+SUBROUTINE DGEGSSV(N, A, LDA, B, X, MAX_ITER, TOL, OMEGA, INFO)
 ```
 
 Arguments should be ordered:
