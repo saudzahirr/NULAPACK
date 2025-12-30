@@ -116,7 +116,7 @@ def test(build_tests=False, with_py=False):
     for file in Path(__file__).parent.glob("test_*"):
         if file.is_file() and os.access(file, os.X_OK):
             logger.info(f"Running {file.name} ...")
-            run_command(str(file))
+            run_command(f"bin/{file.name}")
     run_command("pytest -s -v")
 
 
