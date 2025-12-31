@@ -52,13 +52,15 @@ C   ------------------------------------------------------------------
 
 C   D u m m y   A r g u m e n t s
 C   ------------------------------------------------------------------
-      INTEGER       :: N, MAX_ITER, INFO, I, J, K, INDEX
-      COMPLEX       :: A(*), B(*), X(*)
+      INTEGER       :: N, MAX_ITER, INFO
+      COMPLEX       :: A(*), B(N), X(N)
       REAL          :: TOL, OMEGA
 
 C   L o c a l   V a r i a b l e s
 C   ------------------------------------------------------------------
-      COMPLEX       :: X_NEW(N), S
+      INTEGER          :: I, J, K, INDEX
+      COMPLEX          :: X_NEW(N)
+      COMPLEX          :: S
       REAL          :: DIFF, MAX_DIFF
 
 C   I n i t i a l   S t a t u s

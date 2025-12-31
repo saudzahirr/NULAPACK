@@ -52,14 +52,16 @@ C   ------------------------------------------------------------------
 
 C   D u m m y   A r g u m e n t s
 C   ------------------------------------------------------------------
-      INTEGER          :: N, MAX_ITER, INFO, I, J, K, INDEX
-      DOUBLE COMPLEX   :: A(*), B(*), X(*)
+      INTEGER          :: N, MAX_ITER, INFO
+      DOUBLE COMPLEX   :: A(*), B(N), X(N)
       DOUBLE PRECISION :: TOL, OMEGA
 
 C   L o c a l   V a r i a b l e s
 C   ------------------------------------------------------------------
-      DOUBLE COMPLEX   :: X_NEW(N), S
-      DOUBLE PRECISION :: DIFF, MAX_DIFF
+      INTEGER              :: I, J, K, INDEX
+      DOUBLE COMPLEX       :: X_NEW(N)
+      DOUBLE COMPLEX       :: S
+      DOUBLE PRECISION     :: DIFF, MAX_DIFF
 
 C   I n i t i a l   S t a t u s
 C   ------------------------------------------------------------------

@@ -39,7 +39,6 @@ def test_double_precision():
     assert np.allclose(x, [1.0, 2.0, -1.0, 1.0], atol=1e-10)
 
 
-@pytest.mark.skip(reason="Complex Jacobi solver currently fails, skipping for now")
 def test_complex_float():
     a = np.array(
         [
@@ -69,7 +68,6 @@ def test_complex_float():
     assert np.allclose(x, expected, atol=1e-5)
 
 
-@pytest.mark.skip(reason="Complex Jacobi solver currently fails, skipping for now")
 def test_complex_double():
     a = np.array(
         [
