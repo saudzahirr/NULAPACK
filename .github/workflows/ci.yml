@@ -76,6 +76,7 @@ jobs:
           lib/
           dist/
           .mesonpy/
+          build.log
         retention-days: 5
 
   code-quality:

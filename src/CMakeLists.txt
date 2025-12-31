@@ -14,7 +14,7 @@ foreach(SRC ${FORTRAN_SOURCES})
 endforeach()
 
 FortranCInterface_HEADER(
-    ${CMAKE_SOURCE_DIR}/interface/mangling.h
+    ${CMAKE_SOURCE_DIR}/interface/cpp/mangling.h
     MACRO_NAMESPACE    "API_"
     SYMBOL_NAMESPACE   "API_"
     SYMBOLS            ${SYMBOLS}

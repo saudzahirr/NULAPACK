@@ -2,6 +2,7 @@ from importlib.metadata import PackageNotFoundError, version
 
 from .gauss_seidel import gauss_seidel
 from .jacobi import jacobi
+from .thomas import thomas
 
 
 try:
@@ -10,4 +11,4 @@ except PackageNotFoundError:
     # package is not installed
     pass
 
-__all__ = ["__version__", "gauss_seidel", "jacobi"]
+__all__ = ["__version__", "gauss_seidel", "jacobi", "thomas"]

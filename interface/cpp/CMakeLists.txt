@@ -47,10 +47,3 @@ install(TARGETS nulapack_shared nulapack_static
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
 )
-
-install(FILES 
-    ${CMAKE_CURRENT_SOURCE_DIR}/gauss-seidel.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/types.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/mangling.h
-    DESTINATION include
-)

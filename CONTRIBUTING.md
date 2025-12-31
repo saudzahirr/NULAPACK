@@ -47,6 +47,8 @@ Feature requests are welcome! Please create an issue with:
    - `<OP>`: 2-3 letter operation code (SV, TRF, TRS, EV, SVD, GSV, etc.)
    - No underscores, all uppercase, 6-8 characters total
 
+   Reference: [LAPACK matrix type conventions](https://www.netlib.org/lapack/lug/node24.html)
+
 4. **Code Style Guidelines**:
    - **Fortran**: Use fixed-form Fortran with proper indentation
      - Include descriptive header comments with routine name and purpose

@@ -22,7 +22,7 @@ endforeach()
 SYSTEM_INFO()
 
 add_subdirectory(src)
-add_subdirectory(interface)
+add_subdirectory(interface/cpp)
 
 option(BUILD_TEST "Build tests" OFF)
 
@@ -35,5 +35,5 @@ if(BUILD_TEST)
     )
     FetchContent_MakeAvailable(catch2)
 
-    add_subdirectory(tests)
+    add_subdirectory(tests/cpp)
 endif()
