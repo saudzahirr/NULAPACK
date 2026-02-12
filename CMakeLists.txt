@@ -27,6 +27,7 @@ add_subdirectory(interface/cpp)
 option(BUILD_TEST "Build tests" OFF)
 
 if(BUILD_TEST)
+    enable_testing()
     include(FetchContent)
     FetchContent_Declare(
         catch2

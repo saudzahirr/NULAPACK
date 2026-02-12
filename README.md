@@ -1,5 +1,15 @@
 # NULAPACK: NUmerical Linear Algebra PACKage
 
+[![Tests](https://github.com/nulapack/nulapack/actions/workflows/ci.yml/badge.svg)](https://github.com/nulapack/nulapack/actions/workflows/ci.yml)
+[![Documentation](https://github.com/nulapack/nulapack/actions/workflows/ci.yml/badge.svg)](https://github.com/nulapack/nulapack/actions/workflows/ci.yml)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+
+[![codecov](https://codecov.io/gh/nulapack/nulapack/branch/master/graph/badge.svg)](https://codecov.io/gh/nulapack/nulapack)
+[![License](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](./LICENSE)
+
+[![PyPI Downloads](https://img.shields.io/pypi/dm/nulapack.svg?label=PyPI%20downloads)](https://pypi.org/project/nulapack/)
+[![Python versions](https://img.shields.io/pypi/pyversions/nulapack.svg)](https://pypi.org/project/nulapack/)
+
 NULAPACK is a lightweight, high-performance numerical linear algebra library. It provides a set of core subroutines implemented in Fortran for efficiency, with convenient C++ and Python interfaces.
 
 ## Installation

@@ -1,9 +1,8 @@
 name: Release to PyPI
 
 on:
-  push:
-    tags:
-      - 'v*.*.*'
+  release:
+    types: [published]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -34,18 +33,6 @@ jobs:
 
       - name: Setup Python
         uses: actions/setup-python@v6
-
-      - name: Install system dependencies (Linux)
-        if: runner.os == 'Linux'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gfortran build-essential cmake
-
-      - name: Verify system dependencies (Windows)
-        if: runner.os == 'Windows'
-        run: |
-          cmake --version
-          where cmake
 
       - name: Install Python dependencies
         run: |
@@ -83,8 +70,3 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           packages-dir: wheels
-
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}

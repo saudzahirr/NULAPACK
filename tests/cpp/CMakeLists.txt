@@ -9,6 +9,5 @@ foreach(src ${TEST_SOURCES})
     add_executable(${name} ${src} $<TARGET_OBJECTS:fortran_objs>)
     target_include_directories(${name} PRIVATE ${CMAKE_SOURCE_DIR}/interface/cpp)
     target_link_libraries(${name} PRIVATE m Catch2::Catch2WithMain)
+    add_test(NAME ${name} COMMAND ${name})
 endforeach()
-
-enable_testing()

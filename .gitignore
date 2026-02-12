@@ -81,3 +81,9 @@ docs/latex/
 
 *.log
 .vscode
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml

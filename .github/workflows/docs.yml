@@ -1,0 +1,45 @@
+name: Documentation
+
+on:
+  push:
+    tags:
+      - 'v*'
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+permissions:
+  contents: write
+
+jobs:
+  documentation:
+    name: Generate Documentation
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y doxygen graphviz
+
+      - name: Generate documentation
+        run: python bin/build.py doxygen
+
+      - name: Set Artifact Name
+        id: artifact-name
+        run: |
+          echo "artifact_name=${{ github.run_id }}[${{ github.run_attempt }}]--docs-artifacts" \
+          | tee -a $GITHUB_OUTPUT
+
+      - name: Upload Pages Artifacts
+        uses: actions/upload-pages-artifact@v4
+        with:
+          name: ${{ steps.artifact-name.outputs.artifact_name }}
+          path: build/docs
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: ${{ steps.artifact-name.outputs.artifact_name }}
