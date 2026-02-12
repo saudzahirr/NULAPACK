@@ -1,12 +1,8 @@
 name: Documentation
 
 on:
-  push:
-    tags:
-      - 'v*'
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  release:
+    types: [published]
 
 permissions:
   pages: write
