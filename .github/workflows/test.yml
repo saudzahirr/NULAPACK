@@ -31,7 +31,7 @@ jobs:
         run: uv run bin/build.py develop --build-tests --with-py
 
       - name: Run CTest
-        run: cd build && ctest --output-on-failure
+        run: ctest --output-on-failure --test-dir build
 
       - name: Run Pytest
         run: uv run pytest -v -n auto --cov --cov-report=xml
@@ -68,10 +68,6 @@ jobs:
 
       - name: Setup uv
         uses: astral-sh/setup-uv@v7
-
-      # - name: Install linting tools
-      #   run: |
-      #     uv pip install --system ruff==0.14.*
 
       - name: Ruff Lint and Format Check
         run: |
