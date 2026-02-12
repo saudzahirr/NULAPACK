@@ -1,7 +1,7 @@
 # NULAPACK: NUmerical Linear Algebra PACKage
 
-[![Tests](https://github.com/nulapack/nulapack/actions/workflows/ci.yml/badge.svg)](https://github.com/nulapack/nulapack/actions/workflows/ci.yml)
-[![Documentation](https://github.com/nulapack/nulapack/actions/workflows/ci.yml/badge.svg)](https://github.com/nulapack/nulapack/actions/workflows/ci.yml)
+[![Tests](https://github.com/nulapack/nulapack/actions/workflows/test.yml/badge.svg)](https://github.com/nulapack/nulapack/actions/workflows/test.yml)
+[![Documentation](https://github.com/nulapack/nulapack/actions/workflows/docs.yml/badge.svg)](https://github.com/nulapack/nulapack/actions/workflows/docs.yml)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
 [![codecov](https://codecov.io/gh/nulapack/nulapack/branch/master/graph/badge.svg)](https://codecov.io/gh/nulapack/nulapack)
