@@ -5,6 +5,7 @@
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
 [![codecov](https://codecov.io/gh/nulapack/nulapack/branch/master/graph/badge.svg)](https://codecov.io/gh/nulapack/nulapack)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=NULAPACK_NULAPACK&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=NULAPACK_NULAPACK)
 [![License](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](./LICENSE)
 
 [![PyPI Downloads](https://img.shields.io/pypi/dm/nulapack.svg?label=PyPI%20downloads)](https://pypi.org/project/nulapack/)
