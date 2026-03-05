@@ -20,7 +20,6 @@ classifiers = [
     'Programming Language :: C++',
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
@@ -34,11 +33,10 @@ classifiers = [
     'Operating System :: Unix',
     'Operating System :: MacOS',
 ]
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 
 dependencies = [
-    "numpy<2; python_version<'3.10'",
-    "numpy>=2; python_version>='3.10'",
+    "numpy",
 ]
 
 [project.urls]
@@ -126,5 +124,4 @@ docstring-code-format = true
 docstring-code-line-length = "dynamic"
 
 [tool.cibuildwheel]
-# Skip 32-bit Windows builds due to Fortran/Meson compatibility issues
-skip = ["*-win32"]
+enable = ["cpython-prerelease"]
