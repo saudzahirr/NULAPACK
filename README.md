@@ -1,11 +1,11 @@
 # NULAPACK: NUmerical Linear Algebra PACKage
 
-[![Tests](https://github.com/nulapack/nulapack/actions/workflows/test.yml/badge.svg)](https://github.com/nulapack/nulapack/actions/workflows/test.yml)
-[![Documentation](https://github.com/nulapack/nulapack/actions/workflows/docs.yml/badge.svg)](https://github.com/nulapack/nulapack/actions/workflows/docs.yml)
+[![Tests](https://github.com/eggzec/NULAPACK/actions/workflows/test.yml/badge.svg)](https://github.com/eggzec/NULAPACK/actions/workflows/test.yml)
+[![Documentation](https://github.com/eggzec/NULAPACK/actions/workflows/docs.yml/badge.svg)](https://github.com/eggzec/NULAPACK/actions/workflows/docs.yml)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
-[![codecov](https://codecov.io/gh/nulapack/nulapack/branch/master/graph/badge.svg)](https://codecov.io/gh/nulapack/nulapack)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=NULAPACK_NULAPACK&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=NULAPACK_NULAPACK)
+[![codecov](https://codecov.io/gh/eggzec/NULAPACK/branch/master/graph/badge.svg)](https://codecov.io/gh/eggzec/NULAPACK)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=eggzec_NULAPACK&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=eggzec_NULAPACK)
 [![License](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](./LICENSE)
 
 [![PyPI Downloads](https://img.shields.io/pypi/dm/nulapack.svg?label=PyPI%20downloads)](https://pypi.org/project/nulapack/)
@@ -117,7 +117,7 @@ Building from source is useful if you want the latest features or need to modify
 **Build and install**
 
 ```bash
-git clone https://github.com/NULAPACK/NULAPACK.git
+git clone https://github.com/eggzec/NULAPACK.git
 cd NULAPACK
 
 uv venv

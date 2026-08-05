@@ -40,11 +40,11 @@ dependencies = [
 ]
 
 [project.urls]
-homepage = "https://nulapack.github.io/NULAPACK"
-documentation = "https://nulapack.github.io/NULAPACK/files"
-source = "https://github.com/NULAPACK/NULAPACK"
-releasenotes = "https://github.com/NULAPACK/NULAPACK/releases/latest"
-issues = "https://github.com/NULAPACK/NULAPACK/issues"
+homepage = "https://eggzec.github.io/NULAPACK"
+documentation = "https://eggzec.github.io/NULAPACK/files"
+source = "https://github.com/eggzec/NULAPACK"
+releasenotes = "https://github.com/eggzec/NULAPACK/releases/latest"
+issues = "https://github.com/eggzec/NULAPACK/issues"
 # TODO: provide changelog URL from docs
 
 [dependency-groups]
